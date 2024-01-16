@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LearnMVC.Areas.Identity.Data
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var viewName = ViewContext;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LearnMVC.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            @if (ViewContext?.RouteData?.Values["page"]?.ToString() == "/Account/Register")
+            {
+                <a class="nav-link text-dark active" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            }
+            else
+            {
+                <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            }
+        </li>
+        <li class="nav-item">
+            @if (ViewContext?.RouteData?.Values["page"]?.ToString() == "/Account/Login")
+            {
+                <a class="nav-link text-dark active" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            } 
+            else
+            {
+                <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            }
+        </li>
+    </ul>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
