@@ -12,6 +12,9 @@ namespace LearnMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var resendApiKey = builder.Configuration["Resend:ApiKey"];
+
             builder.Services.AddDbContext<LearnMVCContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("LearnMVCContext") ?? throw new InvalidOperationException("Connection string 'LearnMVCContext' not found.")));
             builder.Services.AddDbContext<AuthDbContext>(options =>
