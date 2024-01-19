@@ -11,12 +11,12 @@ public class EmailSender : IEmailSender
 {
     private readonly ILogger _logger;
 
-    public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
-                       ILogger<EmailSender> logger)
-    {
-        Options = optionsAccessor.Value;
-        _logger = logger;
-    }
+    //public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor,
+    //                   ILogger<EmailSender> logger)
+    //{
+    //    Options = optionsAccessor.Value;
+    //    _logger = logger;
+    //}
 
     //public AuthMessageSenderOptions Options { get; } //Set with Secret Manager.
 
