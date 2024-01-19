@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using LearnMVC.Data;
 using Microsoft.AspNetCore.Identity;
 using LearnMVC.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using WebPWrecover.Services;
 namespace LearnMVC
 {
     public class Program
@@ -20,6 +22,7 @@ namespace LearnMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
 
             var app = builder.Build();
 
